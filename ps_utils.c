@@ -7,6 +7,7 @@ void init_stack_item(stack_h *g_stack)
     if (!g_stack)
         return ;
     g_stack->i_value = 0;
+    g_stack->stack_index = 0;
     g_stack->i_index = 0;
     g_stack->npts = 0;
     g_stack->nmts = 0;
@@ -50,6 +51,13 @@ void update_npts(stack_h *g_stack , int new_npts)
     if (!g_stack)
         return ;
     g_stack->npts = new_npts;
+}
+
+void update_stack_index(stack_h *g_stack , int new_stack_index)
+{
+    if (!g_stack)
+        return ;
+    g_stack->stack_index = new_stack_index;
 }
 
 
