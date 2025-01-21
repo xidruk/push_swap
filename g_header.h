@@ -22,6 +22,17 @@
 #define UNDERFLOWFLAG 4 // under flow error 
 #define EUOFNNODE 5 // error under creation of new node (allocation fails)
 
+typedef struct list
+{
+  int stack_index ; // index on the current stack a or b 
+  int i_value; //  item value
+  int i_index; // item index
+  int npts; // needed poisition to be sorted
+  int nmts; // needed moves to be sorted
+  char stack_id; // stack id a or b
+  struct list *next_node; // pointer to the next node
+} stack_h; // stack_h stacl holder
+
 // Errors functions
 void error_center(int flag);
 
@@ -42,15 +53,10 @@ int set_next_node(stack_h *current_node, stack_h *next_node);
 void free_stack(stack_h *g_stack);
 stack_h *array_to_linked_list(int *array, int size);
 
-typedef struct list
-{
-  int i_value; //  item value
-  int i_index; // item index
-  int npts; // needed poisition to be sorted
-  int nmts; // needed moves to be sorted
-  char stack_id; // stack id a or b
-  struct list *next_node; // pointer to the next node
-} stack_h; // stack_h stacl holder
+// chain utils functions 
 
+int check_stack_is_sorted(stack_h *g_stack, int chain_size);
+void set_g_stack(stack_h *g_stack, int chain_size);
+int get_npts(stack_h *g_stack, int _node_position);
 
 #endif
